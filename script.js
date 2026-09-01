@@ -35,6 +35,7 @@ const formStatus = document.querySelector('#form-status');
 const modal = document.querySelector('#ballot-modal');
 const canvas = document.querySelector('#ballot-canvas');
 const modalFeedback = document.querySelector('#modal-feedback');
+const confirmationSound = document.querySelector('#confirmation-sound');
 const canonicalBallotUrl = 'https://lucianovieira4545.com.br/#minha-colinha';
 
 async function loadCandidates(path) {
@@ -233,6 +234,11 @@ async function saveBallotImage() {
 
 viewButton?.addEventListener('click', async () => {
   modalFeedback.textContent = '';
+  if (confirmationSound) {
+    confirmationSound.currentTime = 0;
+    confirmationSound.volume = 0.85;
+    confirmationSound.play().catch(() => {});
+  }
   await renderBallotImage();
   modal.showModal();
 });
