@@ -46,6 +46,8 @@ button,a{-webkit-tap-highlight-color:transparent}
 
 .slogan{position:relative;z-index:3;background:#fff;padding:28px 0 20px;border-bottom:14px solid var(--orange)}
 .slogan img{width:min(1240px,94%);margin:auto;max-height:154px}
+.campaign-video-wrap{width:min(1120px,calc(100% - 40px));margin:28px auto 8px;padding:8px;background:linear-gradient(120deg,var(--orange),var(--yellow),var(--cyan),var(--blue));border-radius:22px;box-shadow:0 18px 45px rgba(8,62,119,.2)}
+.campaign-video{width:100%;aspect-ratio:16/9;display:block;object-fit:cover;background:#071f4e;border-radius:15px}
 
 .timeline-section{background:var(--orange);padding:52px 0 88px;overflow:hidden}
 .timeline-section h2{text-align:center;color:#fff;text-transform:uppercase;font-size:clamp(2.8rem,5vw,4.7rem);line-height:1;font-weight:900;margin:0 0 54px}
@@ -131,6 +133,14 @@ button,a{-webkit-tap-highlight-color:transparent}
 .modal-action.outline{background:#fff;color:var(--blue);border:3px solid var(--blue)}
 .edit-ballot{display:block;margin:16px auto 0;border:0;background:none;color:#657393;text-decoration:underline;font-weight:700;cursor:pointer}
 .modal-feedback{min-height:22px!important;margin:8px 0 0!important;text-align:center;font-size:.8rem;color:var(--blue)!important;font-weight:700}
+.informativos-modal{width:min(880px,calc(100% - 28px))}
+.informativos-modal .modal-heading h2{max-width:none;margin-bottom:14px}
+.downloads-copy{margin:0 0 26px;color:#657393}
+.download-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.download-button{min-height:58px;border-radius:999px;padding:12px 22px;background:var(--orange);color:#fff;text-decoration:none;text-transform:uppercase;font-weight:900;display:flex;align-items:center;justify-content:flex-start;gap:12px;transition:transform .2s ease,box-shadow .2s ease}
+.download-button:nth-child(even){background:var(--blue)}
+.download-button:hover,.download-button:focus-visible{transform:translateY(-2px);box-shadow:0 10px 22px rgba(21,63,126,.2)}
+.download-button img{width:27px;height:27px;object-fit:contain;filter:brightness(0) invert(1);flex:0 0 auto}
 
 @media(max-width:900px){
   .site-header{padding:8px 0}
@@ -177,6 +187,8 @@ button,a{-webkit-tap-highlight-color:transparent}
   .about p{font-size:.9rem}
   .slogan{padding:24px 0 18px;border-bottom-width:10px}
   .slogan img{width:96%;max-height:190px}
+  .campaign-video-wrap{width:calc(100% - 20px);margin-top:20px;padding:5px;border-radius:15px}
+  .campaign-video{border-radius:10px}
   .timeline-section{padding:38px 0 70px}
   .timeline-section h2{font-size:2.65rem;line-height:1.04;margin-bottom:48px;display:flex;flex-direction:column;align-items:center;gap:7px}
   .timeline-section h2 .heading-right{padding:6px 14px}
@@ -203,6 +215,8 @@ button,a{-webkit-tap-highlight-color:transparent}
   .ballot-preview-wrap{width:min(370px,100%);margin:auto;padding:14px}
   .modal-actions{padding:0 6px}
   .modal-actions h3{font-size:2.1rem}
+  .download-grid{grid-template-columns:1fr}
+  .download-button{font-size:.82rem}
 }
 
 @media(prefers-reduced-motion:reduce){

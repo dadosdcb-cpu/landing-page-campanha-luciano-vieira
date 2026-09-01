@@ -28,6 +28,19 @@ if ('IntersectionObserver' in window) {
   revealElements.forEach((element) => element.classList.add('is-visible'));
 }
 
+const campaignVideo = document.querySelector('#campaign-video');
+if (campaignVideo && 'IntersectionObserver' in window) {
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        campaignVideo.play().catch(() => {});
+      } else if (!campaignVideo.ended) {
+        campaignVideo.pause();
+      }
+    });
+  }, { threshold: 0.35 });
+  videoObserver.observe(campaignVideo);
+}
 const candidateCache = new Map();
 const fields = [...document.querySelectorAll('.candidate-field:not(.fixed)')];
 const viewButton = document.querySelector('#view-ballot');
@@ -36,6 +49,7 @@ const modal = document.querySelector('#ballot-modal');
 const canvas = document.querySelector('#ballot-canvas');
 const modalFeedback = document.querySelector('#modal-feedback');
 const confirmationSound = document.querySelector('#confirmation-sound');
+const informativosModal = document.querySelector('#informativos-modal');
 const canonicalBallotUrl = 'https://lucianovieira4545.com.br/#minha-colinha';
 
 async function loadCandidates(path) {
@@ -248,6 +262,11 @@ modal?.addEventListener('click', (event) => {
   if (event.target === modal) modal.close();
 });
 
+document.querySelector('#open-informativos')?.addEventListener('click', () => informativosModal?.showModal());
+informativosModal?.querySelector('.modal-close')?.addEventListener('click', () => informativosModal.close());
+informativosModal?.addEventListener('click', (event) => {
+  if (event.target === informativosModal) informativosModal.close();
+});
 document.querySelector('#save-ballot')?.addEventListener('click', async () => {
   try {
     await saveBallotImage();

@@ -16,8 +16,8 @@
     <meta name="twitter:image" content="https://lucianovieira4545.com.br/public/og.png" />
     <title>Luciano Vieira — Deputado Federal 4545</title>
     <link rel="icon" href="LOGOS/LOGO%20AZUL.png" />
-    <link rel="stylesheet" href="styles.css?v=20260901-4" />
-    <script src="script.js?v=20260901-4" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260901-5" />
+    <script src="script.js?v=20260901-5" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -73,6 +73,12 @@
           <source media="(max-width: 620px)" srcset="FRASE/PRA%20FAZER%20AINDA%20MAIS%20-%20FRASE%20para%20o%20mobile_Prancheta%201.svg" />
           <img src="FRASE/PRA%20FAZER%20AINDA%20MAIS%20-%20FRASE%20longa%20para%20desktop_Prancheta%201.svg" alt="Pra fazer ainda mais!" />
         </picture>
+        <div class="campaign-video-wrap">
+          <video class="campaign-video" id="campaign-video" controls muted playsinline preload="metadata" poster="VIDEO%20LUCIANO%20VIEIRA/video-apresentacao-luciano-vieira-poster.jpg">
+            <source src="VIDEO%20LUCIANO%20VIEIRA/video-apresentacao-luciano-vieira-web.mp4" type="video/mp4" />
+            Seu navegador não suporta a reprodução deste vídeo.
+          </video>
+        </div>
       </div>
 
       <section class="timeline-section" id="trajetoria">
@@ -92,8 +98,8 @@
         <div class="container info-grid">
           <article>
             <h2>Baixe o nosso <strong>informativo.</strong></h2>
-            <p>O informativo de Luciano Vieira reunirá sua trajetória, experiência na vida pública, principais propostas e projetos para o Estado do Rio de Janeiro.</p>
-            <button class="pill-button" type="button" disabled><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Material em breve</button>
+            <p>Escolha a sua região e baixe o informativo de Luciano Vieira com sua trajetória, propostas e projetos para o Estado do Rio de Janeiro.</p>
+            <button class="pill-button" id="open-informativos" type="button"><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Baixar informativos</button>
           </article>
           <article>
             <h2>Veja o nosso <strong>informativo online.</strong></h2>
@@ -165,6 +171,28 @@
 
 
     <audio id="confirmation-sound" src="SOM%20CONFIRMA%C3%87%C3%83O/CONFIRMAR.mp3" preload="auto" aria-hidden="true"></audio>
+
+    <dialog class="ballot-modal informativos-modal" id="informativos-modal">
+      <button class="modal-close" type="button" aria-label="Fechar informativos">×</button>
+      <div class="modal-heading">
+        <p>Materiais da campanha</p>
+        <h2>Baixe o informativo da sua região</h2>
+      </div>
+      <p class="downloads-copy">Escolha uma localidade para baixar o arquivo em PDF.</p>
+      <div class="download-grid">
+        <a class="download-button" href="INFORMATIVOS/CABO%20FRIO/Lamina%2020x28cm%20-%20CABO%20FRIO%20-%20vers%C3%A3o%20com%20Gabriela.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Cabo Frio</a>
+        <a class="download-button" href="INFORMATIVOS/CLINICA%20ALCOBA%C3%87A/Lamina%2020x28cm%20-%20CL%C3%8DNICA%20ALCOBA%C3%87A.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Clínica Alcobaça</a>
+        <a class="download-button" href="INFORMATIVOS/IGREJA/informativo%20IGREJA%20-%20220X28CM%20-%204%20P%C3%81GINAS.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Igreja</a>
+        <a class="download-button" href="INFORMATIVOS/IGUABA/Lamina%2020x28cm%20-%20IGUABA.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Iguaba</a>
+        <a class="download-button" href="INFORMATIVOS/ITAGUAI/Lamina%2020x28cm%20-%20ITAGUA%C3%8D.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Itaguaí</a>
+        <a class="download-button" href="INFORMATIVOS/MAGE/Lamina%2020x28cm%20-%20MAG%C3%89.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Magé</a>
+        <a class="download-button" href="INFORMATIVOS/MANGARATIBA/Lamina%2020x28cm%20-%20MANGARATIBA.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Mangaratiba</a>
+        <a class="download-button" href="INFORMATIVOS/PARATY/Lamina%2020x28cm%20-%20PARATY.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Paraty</a>
+        <a class="download-button" href="INFORMATIVOS/PATY%20DO%20ALFERES/Lamina%2020x28cm%20-%20PATY%20DO%20ALFERES.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Paty do Alferes</a>
+        <a class="download-button" href="INFORMATIVOS/PAVUNA%20E%20REGIAO/Infomativo%208%20pgs%20-%20PAVUNA%20E%20REGI%C3%83O%20-%20revis%C3%A3o%20final.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Pavuna e Região</a>
+        <a class="download-button" href="INFORMATIVOS/SAO%20JOAO%20DE%20MERITI/informativo%20S%C3%83O%20JO%C3%83O%20-%208%20PGS%20-%20SEM%20GOVERNADOR.pdf" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> São João de Meriti</a>
+      </div>
+    </dialog>
 
     <dialog class="ballot-modal" id="ballot-modal">
       <button class="modal-close" type="button" aria-label="Fechar">×</button>
