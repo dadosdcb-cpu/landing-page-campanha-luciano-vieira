@@ -1,3 +1,5 @@
+document.documentElement.classList.add('js-ready');
+
 const menuButton = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#main-nav');
 
@@ -20,7 +22,7 @@ if ('IntersectionObserver' in window) {
       entry.target.classList.add('is-visible');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.18, rootMargin: '0px 0px -35px' });
+  }, { threshold: 0.08, rootMargin: '0px 0px -10% 0px' });
   revealElements.forEach((element) => revealObserver.observe(element));
 } else {
   revealElements.forEach((element) => element.classList.add('is-visible'));
