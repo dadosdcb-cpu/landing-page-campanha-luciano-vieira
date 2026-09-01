@@ -28,7 +28,7 @@ button,a{-webkit-tap-highlight-color:transparent}
 .hero{min-height:590px;background:#fff;overflow:hidden;position:relative;z-index:1}
 .hero-inner{width:min(1260px,calc(100% - 30px));min-height:590px;margin:auto;display:grid;grid-template-columns:1fr 1fr;align-items:end}
 .hero-photo-wrap{align-self:end;transform:translateY(10px);overflow:visible}
-.hero-photo{width:116%;max-width:none;margin-left:-10%;object-fit:contain;object-position:center bottom}
+.hero-photo{width:116%;height:auto;max-width:none;margin-left:-10%;object-fit:contain;object-position:center bottom}
 .hero-brand{align-self:center;padding:24px 8px 34px;transform:none}
 .hero-brand img{width:min(610px,100%);margin:auto}
 .blue-section{background:var(--blue);color:#fff;position:relative;overflow:hidden}
