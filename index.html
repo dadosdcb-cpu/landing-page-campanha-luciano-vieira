@@ -16,8 +16,8 @@
     <meta name="twitter:image" content="https://lucianovieira4545.com.br/public/og.png" />
     <title>Luciano Vieira — Deputado Federal 4545</title>
     <link rel="icon" href="LOGOS/LOGO%20AZUL.png" />
-    <link rel="stylesheet" href="styles.css?v=20260901-5" />
-    <script src="script.js?v=20260901-5" defer></script>
+    <link rel="stylesheet" href="styles.css?v=20260907-1" />
+    <script src="script.js?v=20260907-1" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
@@ -81,6 +81,41 @@
         </div>
       </div>
 
+      <section class="stories-section" id="historias">
+        <div class="container">
+          <h2 class="stories-heading"><span>Histórias que</span> <strong>contam</strong></h2>
+          <div class="stories-grid">
+            <article class="story-card" id="historia-1">
+              <video controls playsinline preload="metadata" poster="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2001/historia-01-poster.jpg">
+                <source src="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2001/historia-01-web.mp4" type="video/mp4" />
+              </video>
+              <h3>História 01</h3>
+              <button class="story-share-button" type="button" data-story="1" data-title="História 01" data-video="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2001/historia-01-web.mp4"><img src="ICONS/ICONS%20USADOS-02.svg" alt="" /> Compartilhar vídeo</button>
+            </article>
+            <article class="story-card" id="historia-2">
+              <video controls playsinline preload="metadata" poster="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2002/historia-02-poster.jpg">
+                <source src="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2002/historia-02-web.mp4" type="video/mp4" />
+              </video>
+              <h3>História 02</h3>
+              <button class="story-share-button" type="button" data-story="2" data-title="História 02" data-video="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2002/historia-02-web.mp4"><img src="ICONS/ICONS%20USADOS-02.svg" alt="" /> Compartilhar vídeo</button>
+            </article>
+            <article class="story-card" id="historia-3">
+              <video controls playsinline preload="metadata" poster="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2003/historia-03-poster.jpg">
+                <source src="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2003/historia-03-web.mp4" type="video/mp4" />
+              </video>
+              <h3>História 03</h3>
+              <button class="story-share-button" type="button" data-story="3" data-title="História 03" data-video="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2003/historia-03-web.mp4"><img src="ICONS/ICONS%20USADOS-02.svg" alt="" /> Compartilhar vídeo</button>
+            </article>
+            <article class="story-card" id="historia-4">
+              <video controls playsinline preload="metadata" poster="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2004/historia-04-poster.jpg">
+                <source src="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2004/historia-04-web.mp4" type="video/mp4" />
+              </video>
+              <h3>História 04</h3>
+              <button class="story-share-button" type="button" data-story="4" data-title="História 04" data-video="VIDEOS%20LUCIANO%20HISTORIAS/VIDEO%2004/historia-04-web.mp4"><img src="ICONS/ICONS%20USADOS-02.svg" alt="" /> Compartilhar vídeo</button>
+            </article>
+          </div>
+        </div>
+      </section>
       <section class="timeline-section" id="trajetoria">
         <div class="container">
           <h2 class="reveal-heading"><span class="heading-left">Uma história em</span> <span class="heading-right">movimento</span></h2>
@@ -171,6 +206,20 @@
 
 
     <audio id="confirmation-sound" src="SOM%20CONFIRMA%C3%87%C3%83O/CONFIRMAR.mp3" preload="auto" aria-hidden="true"></audio>
+
+    <dialog class="ballot-modal story-share-modal" id="story-share-modal">
+      <button class="modal-close" type="button" aria-label="Fechar opções do vídeo">×</button>
+      <div class="modal-heading">
+        <p>Histórias que contam</p>
+        <h2 id="story-share-title">Compartilhe esta história</h2>
+      </div>
+      <p class="story-share-copy">Escolha como deseja enviar este vídeo.</p>
+      <div class="story-modal-actions">
+        <a class="modal-action orange" id="download-story-video" href="#" download><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Baixar vídeo</a>
+        <button class="modal-action blue" id="share-story-link" type="button"><img src="ICONS/ICONS%20USADOS-02.svg" alt="" /> Compartilhar link</button>
+      </div>
+      <p class="modal-feedback" id="story-share-feedback" aria-live="polite"></p>
+    </dialog>
 
     <dialog class="ballot-modal informativos-modal" id="informativos-modal">
       <button class="modal-close" type="button" aria-label="Fechar informativos">×</button>

@@ -50,6 +50,10 @@ const canvas = document.querySelector('#ballot-canvas');
 const modalFeedback = document.querySelector('#modal-feedback');
 const confirmationSound = document.querySelector('#confirmation-sound');
 const informativosModal = document.querySelector('#informativos-modal');
+const storyShareModal = document.querySelector('#story-share-modal');
+const storyDownloadLink = document.querySelector('#download-story-video');
+const storyShareFeedback = document.querySelector('#story-share-feedback');
+let selectedStoryLink = '';
 const canonicalBallotUrl = 'https://lucianovieira4545.com.br/#minha-colinha';
 
 async function loadCandidates(path) {
@@ -266,6 +270,37 @@ document.querySelector('#open-informativos')?.addEventListener('click', () => in
 informativosModal?.querySelector('.modal-close')?.addEventListener('click', () => informativosModal.close());
 informativosModal?.addEventListener('click', (event) => {
   if (event.target === informativosModal) informativosModal.close();
+});
+document.querySelectorAll('.story-share-button').forEach((button) => {
+  button.addEventListener('click', () => {
+    const story = button.dataset.story;
+    selectedStoryLink = 'https://lucianovieira4545.com.br/#historia-' + story;
+    storyDownloadLink.href = button.dataset.video;
+    storyDownloadLink.download = 'historia-' + String(story).padStart(2, '0') + '-luciano-vieira.mp4';
+    document.querySelector('#story-share-title').textContent = button.dataset.title;
+    storyShareFeedback.textContent = '';
+    storyShareModal.showModal();
+  });
+});
+
+storyShareModal?.querySelector('.modal-close')?.addEventListener('click', () => storyShareModal.close());
+storyShareModal?.addEventListener('click', (event) => {
+  if (event.target === storyShareModal) storyShareModal.close();
+});
+
+document.querySelector('#share-story-link')?.addEventListener('click', async () => {
+  const shareData = { title: 'Histórias que contam — Luciano Vieira', text: 'Assista a esta história de Luciano Vieira.', url: selectedStoryLink };
+  try {
+    if (navigator.share) {
+      await navigator.share(shareData);
+      storyShareFeedback.textContent = 'Link compartilhado.';
+    } else {
+      await navigator.clipboard.writeText(selectedStoryLink);
+      storyShareFeedback.textContent = 'Link copiado para compartilhar.';
+    }
+  } catch (error) {
+    if (error?.name !== 'AbortError') storyShareFeedback.textContent = 'Não foi possível compartilhar o link.';
+  }
 });
 document.querySelector('#save-ballot')?.addEventListener('click', async () => {
   try {
