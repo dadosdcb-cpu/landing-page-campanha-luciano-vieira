@@ -1,5 +1,5 @@
 const feedback = document.querySelector('#share-feedback');
-document.querySelector('#share-informativo')?.addEventListener('click', async () => {
+async function shareCurrentPage() {
   const data = {
     title: document.body.dataset.shareTitle || document.title,
     text: 'Veja o informativo de Luciano Vieira.',
@@ -8,7 +8,7 @@ document.querySelector('#share-informativo')?.addEventListener('click', async ()
   try {
     if (navigator.share) {
       await navigator.share(data);
-      feedback.textContent = 'Link compartilhado.';
+      if (feedback) feedback.textContent = 'Link compartilhado.';
       return;
     }
     if (navigator.clipboard && window.isSecureContext) {
@@ -23,8 +23,9 @@ document.querySelector('#share-informativo')?.addEventListener('click', async ()
       document.execCommand('copy');
       area.remove();
     }
-    feedback.textContent = 'Link copiado. Agora é só enviar.';
+    if (feedback) feedback.textContent = 'Link copiado. Agora é só enviar.';
   } catch (error) {
-    if (error.name !== 'AbortError') feedback.textContent = 'Não foi possível compartilhar. Tente novamente.';
+    if (error.name !== 'AbortError' && feedback) feedback.textContent = 'Não foi possível compartilhar. Tente novamente.';
   }
-});
+}
+document.querySelectorAll('#share-informativo, #share-informativo-bottom').forEach((button) => button.addEventListener('click', shareCurrentPage));
