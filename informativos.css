@@ -1,0 +1,60 @@
+@font-face{font-family:Montserrat;src:url('FONTES%20USADAS/Montserrat-Regular.ttf') format('truetype');font-weight:400;font-display:swap}
+@font-face{font-family:Montserrat;src:url('FONTES%20USADAS/Montserrat-Bold.ttf') format('truetype');font-weight:700;font-display:swap}
+@font-face{font-family:Montserrat;src:url('FONTES%20USADAS/Montserrat-Black.ttf') format('truetype');font-weight:900;font-display:swap}
+:root{--blue:#284a9b;--deep:#083e77;--cyan:#08abe0;--orange:#f5841f;--yellow:#ffd100;--green:#00ad35;--paper:#f2f0f0;--white:#fff;--ink:#153f7e}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Montserrat,Arial,sans-serif;line-height:1.5}
+img{display:block;max-width:100%}
+button,a{font:inherit;-webkit-tap-highlight-color:transparent}
+.container{width:min(1160px,calc(100% - 32px));margin-inline:auto}
+.info-header{background:var(--blue);border-bottom:8px solid var(--orange);padding:15px 0}
+.info-header .container{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.info-logo{width:min(285px,58vw);height:auto}
+.back-link{color:#fff;text-decoration:none;text-transform:uppercase;font-weight:900;font-size:.86rem}
+.catalog-hero,.reader-hero{text-align:center;background:#fff;padding:62px 0 52px}
+.eyebrow{margin:0 0 8px;color:var(--orange);font-size:.9rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em}
+h1{margin:0;color:var(--blue);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:.98;text-transform:uppercase}
+h1 strong{color:var(--orange)}
+.hero-copy{max-width:720px;margin:20px auto 0;font-size:1.05rem;color:#53658d}
+.catalog{padding:54px 0 80px}
+.catalog-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.info-card{background:#fff;border-radius:20px;overflow:hidden;border-bottom:7px solid var(--orange);box-shadow:0 14px 32px rgba(8,62,119,.13);display:flex;flex-direction:column}
+.info-card:nth-child(3n+2){border-bottom-color:var(--cyan)}
+.card-preview{aspect-ratio:4/3;background:#e7ebf3;overflow:hidden}
+.card-preview img{width:100%;height:100%;object-fit:cover;object-position:top}
+.card-body{padding:22px;display:flex;flex-direction:column;align-items:flex-start;flex:1}
+.card-body h2{margin:0 0 20px;font-size:1.35rem;line-height:1.12;text-transform:uppercase;font-weight:900}
+.action{min-height:52px;border:0;border-radius:999px;padding:11px 22px;color:#fff;text-decoration:none;text-transform:uppercase;font-size:.86rem;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:9px;cursor:pointer}
+.action img{width:23px;height:23px;filter:brightness(0) invert(1)}
+.action.orange{background:var(--orange)}
+.action.green{background:var(--green)}
+.action.blue{background:var(--blue)}
+.card-body .action{width:100%;margin-top:auto}
+.reader-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:26px}
+.share-feedback{min-height:22px;margin:12px 0 0;color:var(--blue);font-size:.85rem;font-weight:700}
+.publication{padding:48px 0 72px}
+.publication-pages{display:grid;gap:30px;max-width:1120px;margin:0 auto}
+.publication-page{display:block;background:#fff;padding:8px;border-radius:16px;box-shadow:0 16px 36px rgba(8,62,119,.16)}
+.publication-page img{width:100%;height:auto;border-radius:10px}
+.publication-note{text-align:center;margin:26px 0 0;color:#617092;font-size:.9rem}
+.info-footer{background:var(--blue);border-top:8px solid var(--orange);padding:30px 16px;color:#fff;text-align:center}
+.info-footer p{margin:0;text-transform:uppercase;font-size:.8rem;font-weight:700}
+@media(max-width:850px){.catalog-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){
+  .container{width:min(100% - 20px,1160px)}
+  .info-header{padding:12px 0}
+  .back-link{font-size:.74rem}
+  .catalog-hero,.reader-hero{padding:42px 0 38px}
+  h1{font-size:2.45rem}
+  .hero-copy{font-size:1rem}
+  .catalog{padding:34px 0 56px}
+  .catalog-grid{grid-template-columns:1fr;gap:24px}
+  .card-preview{aspect-ratio:16/10}
+  .reader-actions{display:grid}
+  .reader-actions .action{width:100%}
+  .publication{padding:26px 0 50px}
+  .publication-pages{gap:18px}
+  .publication-page{padding:4px;border-radius:10px}
+  .publication-page img{border-radius:7px}
+}
