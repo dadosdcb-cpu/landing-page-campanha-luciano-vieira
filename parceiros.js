@@ -77,6 +77,9 @@ function slugify(value) {
 }
 
 function partnerUrl(partner) {
+  if (partner.slug === 'leo-vieira-filho') {
+    return 'https://lucianovieira4545.com.br/PARCEIROS/leo-vieira-filho.html';
+  }
   return `https://lucianovieira4545.com.br/parceiros.html#colinha-${partner.slug}`;
 }
 
@@ -142,7 +145,7 @@ function showPartnerBallot(partner, direct = false) {
 
   const url = partnerUrl(partner);
   document.body.dataset.ballotUrl = url;
-  document.body.dataset.ballotDisplayUrl = `lucianovieira4545.com.br/parceiros.html#colinha-${partner.slug}`;
+  document.body.dataset.ballotDisplayUrl = partnerUrl(partner).replace('https://', '');
   document.body.dataset.ballotShareText = partnerShareText(partner);
   document.title = `Colinha Luciano Vieira + ${partner.name}`;
 
