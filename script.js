@@ -43,6 +43,17 @@ if (campaignVideo && 'IntersectionObserver' in window) {
 }
 const candidateCache = new Map();
 const fields = [...document.querySelectorAll('.candidate-field:not(.fixed)')];
+
+function isDuplicateSenator(field, value) {
+  if (!field.dataset.office?.includes('Senador')) return false;
+
+  return fields.some((otherField) =>
+    otherField !== field
+    && otherField.dataset.office?.includes('Senador')
+    && otherField.classList.contains('confirmed')
+    && otherField.querySelector('input')?.value === value
+  );
+}
 const viewButton = document.querySelector('#view-ballot');
 const formStatus = document.querySelector('#form-status');
 const modal = document.querySelector('#ballot-modal');
@@ -54,7 +65,12 @@ const storyShareModal = document.querySelector('#story-share-modal');
 const storyDownloadLink = document.querySelector('#download-story-video');
 const storyShareFeedback = document.querySelector('#story-share-feedback');
 let selectedStoryLink = '';
-const canonicalBallotUrl = 'https://lucianovieira4545.com.br/#minha-colinha';
+function canonicalBallotUrl() {
+  return document.body.dataset.ballotUrl || 'https://lucianovieira4545.com.br/#minha-colinha';
+}
+function ballotDisplayUrl() {
+  return document.body.dataset.ballotDisplayUrl || 'lucianovieira4545.com.br/#minha-colinha';
+}
 
 async function loadCandidates(path) {
   if (candidateCache.has(path)) return candidateCache.get(path);
@@ -103,6 +119,13 @@ fields.forEach((field) => {
 
     if (input.value.length !== expectedLength) {
       name.textContent = `Digite ${expectedLength} números`;
+      name.classList.add('error');
+      input.focus();
+      return;
+    }
+
+    if (isDuplicateSenator(field, input.value)) {
+      name.textContent = 'Escolha um senador diferente';
       name.classList.add('error');
       input.focus();
       return;
@@ -219,7 +242,7 @@ async function renderBallotImage() {
   context.fillStyle = orange;
   context.fillRect(0, footerY, width, height - footerY);
   drawFittedText(context, 'FAÇA TAMBÉM A SUA COLINHA', width / 2, footerY + 60, 920, 44, 30, '#ffffff');
-  drawFittedText(context, 'lucianovieira4545.com.br/#minha-colinha', width / 2, footerY + 112, 860, 25, 19, '#ffffff', 'center', 700);
+  drawFittedText(context, ballotDisplayUrl(), width / 2, footerY + 112, 860, 25, 19, '#ffffff', 'center', 700);
   drawFittedText(context, 'Compartilhe com sua família e seus amigos.', width / 2, footerY + 151, 760, 22, 17, '#ffffff', 'center', 600);
 
   context.fillStyle = yellow;
@@ -311,18 +334,18 @@ document.querySelector('#save-ballot')?.addEventListener('click', async () => {
 });
 
 document.querySelector('#share-ballot')?.addEventListener('click', async () => {
-  const shareText = 'Monte também a sua colinha eleitoral com Luciano Vieira — Deputado Federal 4545.';
+  const shareText = document.body.dataset.ballotShareText || 'Monte também a sua colinha eleitoral com Luciano Vieira — Deputado Federal 4545.';
   try {
     await renderBallotImage();
     const blob = await canvasBlob();
     const file = new File([blob], 'minha-colinha-luciano-vieira-4545.png', { type: 'image/png' });
     if (navigator.share && (!navigator.canShare || navigator.canShare({ files: [file] }))) {
-      await navigator.share({ title: 'Minha colinha eleitoral', text: shareText, url: canonicalBallotUrl, files: [file] });
+      await navigator.share({ title: 'Minha colinha eleitoral', text: shareText, url: canonicalBallotUrl(), files: [file] });
       modalFeedback.textContent = 'Colinha compartilhada.';
       return;
     }
     await saveBallotImage();
-    window.open(`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${canonicalBallotUrl}`)}`, '_blank', 'noopener,noreferrer');
+    window.open(`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${canonicalBallotUrl()}`)}`, '_blank', 'noopener,noreferrer');
     modalFeedback.textContent = 'A imagem foi salva. Anexe-a à conversa junto com o link.';
   } catch (error) {
     if (error?.name !== 'AbortError') modalFeedback.textContent = 'Compartilhamento cancelado ou indisponível.';
@@ -331,11 +354,11 @@ document.querySelector('#share-ballot')?.addEventListener('click', async () => {
 
 document.querySelector('#copy-ballot-link')?.addEventListener('click', async () => {
   try {
-    await navigator.clipboard.writeText(canonicalBallotUrl);
+    await navigator.clipboard.writeText(canonicalBallotUrl());
     modalFeedback.textContent = 'Link copiado!';
   } catch {
     const textArea = document.createElement('textarea');
-    textArea.value = canonicalBallotUrl;
+    textArea.value = canonicalBallotUrl();
     textArea.style.position = 'fixed';
     textArea.style.opacity = '0';
     document.body.appendChild(textArea);

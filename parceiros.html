@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="theme-color" content="#284a9b" />
+<meta name="description" content="Conheça os parceiros de Luciano Vieira e monte sua colinha com os candidatos já fixados." />
+<title>Nossos Parceiros - Luciano Vieira</title>
+<link rel="icon" href="LOGOS/LOGO%20AZUL.png" />
+<link rel="stylesheet" href="styles.css?v=20260915-1" />
+<link rel="stylesheet" href="parceiros.css?v=20260915-2" />
+<script src="script.js?v=20260915-2" defer></script>
+<script src="parceiros.js?v=20260915-2" defer></script>
+</head>
+<body class="partner-page" data-ballot-url="https://lucianovieira4545.com.br/parceiros.html#colinha-leo-vieira-filho" data-ballot-display-url="lucianovieira4545.com.br/parceiros.html" data-ballot-share-text="Monte também a colinha de Luciano Vieira 4545 com Léo Vieira Filho 45456.">
+<header class="partner-page-header"><div class="container"><a href="index.html"><img class="partner-page-logo" src="LOGOS/LOGO%20EM%20BRANCO_Prancheta%201.svg" alt="Luciano Vieira - Deputado Federal 4545" /></a><a class="partner-back" href="index.html#parceiros">Voltar ao site</a></div></header>
+<main>
+<section class="partner-hero"><div class="container"><p class="eyebrow">Colinhas da campanha</p><h1>Nossos <strong>Parceiros</strong></h1><p>Encontre o deputado estadual da sua região e monte uma colinha com Luciano Vieira. Os dois candidatos já aparecem fixados; você completa apenas os votos que faltam.</p></div></section>
+<section class="partner-list" aria-labelledby="partner-list-title"><div class="container">
+<h2 class="partner-list-heading" id="partner-list-title">Escolha uma parceria</h2>
+<div class="partner-search"><label for="partner-search">Buscar parceiro</label><input id="partner-search" type="search" inputmode="search" autocomplete="off" placeholder="Digite o nome ou o número do candidato" aria-describedby="partner-results-count" /><p id="partner-results-count" aria-live="polite"></p></div>
+<div class="partner-grid" id="partner-grid"></div>
+<p class="partner-empty" id="partner-empty" hidden>Nenhum parceiro foi encontrado. Confira o nome ou o número digitado.</p>
+</div></section>
+<section class="ballot-section partner-ballot-panel" id="partner-ballot-panel" hidden>
+<div class="container ballot-layout"><div class="ballot-intro"><h2>Colinha Luciano Vieira <span id="selected-partner-title">+ Léo Vieira Filho</span></h2><p>Os votos para deputado federal e estadual já estão fixados. Preencha e confirme apenas os demais candidatos.</p></div>
+<form class="ballot" id="ballot-form" aria-label="Monte sua colinha com Luciano Vieira e o parceiro selecionado">
+<div class="candidate-field fixed" data-office="Deputado Federal"><label>Deputado Federal <span class="vote-order">1º voto</span></label><div class="field-row"><span class="fixed-number">4545</span><button type="button" disabled>Fixado</button></div><p class="candidate-name">Luciano Vieira</p></div>
+<div class="candidate-field confirmed partner-fixed" data-office="Deputado Estadual" data-file="CANDIDATOS/DEPUTADO ESTADUAL.txt" data-length="5"><label for="estadual-parceiro">Deputado Estadual <span class="vote-order">2º voto</span></label><div class="field-row"><input id="estadual-parceiro" inputmode="numeric" maxlength="5" value="45456" disabled /><button type="button" disabled>Fixado</button></div><p class="candidate-name" id="selected-partner-name">Léo Vieira Filho</p></div>
+<div class="candidate-field" data-office="1º Senador" data-file="CANDIDATOS/SENADORES.txt" data-length="3"><label for="senador1-parceiro">1º Senador <span class="vote-order">3º voto</span></label><div class="field-row"><input id="senador1-parceiro" inputmode="numeric" maxlength="3" placeholder="000" /><button type="button" class="confirm">Confirmar</button></div><p class="candidate-name" aria-live="polite"></p></div>
+<div class="candidate-field" data-office="2º Senador" data-file="CANDIDATOS/SENADORES.txt" data-length="3"><label for="senador2-parceiro">2º Senador <span class="vote-order">4º voto</span></label><div class="field-row"><input id="senador2-parceiro" inputmode="numeric" maxlength="3" placeholder="000" /><button type="button" class="confirm">Confirmar</button></div><p class="candidate-name" aria-live="polite"></p></div>
+<div class="candidate-field" data-office="Governador" data-file="CANDIDATOS/GOVERNADOR.txt" data-length="2"><label for="governador-parceiro">Governador <span class="vote-order">5º voto</span></label><div class="field-row"><input id="governador-parceiro" inputmode="numeric" maxlength="2" placeholder="00" /><button type="button" class="confirm">Confirmar</button></div><p class="candidate-name" aria-live="polite"></p></div>
+<div class="candidate-field" data-office="Presidente" data-file="CANDIDATOS/PRESIDENTE.txt" data-length="2"><label for="presidente-parceiro">Presidente <span class="vote-order">6º voto</span></label><div class="field-row"><input id="presidente-parceiro" inputmode="numeric" maxlength="2" placeholder="00" /><button type="button" class="confirm">Confirmar</button></div><p class="candidate-name" aria-live="polite"></p></div>
+<button class="share-button" id="view-ballot" type="button" disabled><img src="ICONS/ICONS%20USADOS-02.svg" alt="" /> Ver minha colinha</button><p class="form-status" id="form-status">Confirme os quatro números restantes para liberar o compartilhamento.</p>
+</form></div></section>
+</main>
+<footer class="partner-page-footer"><img src="LOGOS/LOGO%20EM%20BRANCO_Prancheta%201.svg" alt="Luciano Vieira - Deputado Federal 4545" /><p>Prévia local da área de parceiros</p></footer>
+<audio id="confirmation-sound" src="SOM%20CONFIRMA%C3%87%C3%83O/CONFIRMAR.mp3" preload="auto" aria-hidden="true"></audio>
+<dialog class="ballot-modal" id="ballot-modal"><button class="modal-close" type="button" aria-label="Fechar">×</button><div class="modal-heading"><p>Sua colinha está pronta</p><h2>Confira antes de compartilhar</h2></div><div class="modal-layout"><div class="ballot-preview-wrap"><canvas id="ballot-canvas" width="1080" height="1620" aria-label="Prévia da sua colinha eleitoral"></canvas></div><div class="modal-actions"><h3>O que você deseja fazer?</h3><p>Compartilhe a imagem e o link desta colinha com sua família e amigos.</p><button class="modal-action green" id="share-ballot" type="button"><img src="ICONS/ICONS%20USADOS-02.svg" alt="" /> Compartilhar imagem + link</button><button class="modal-action orange" id="save-ballot" type="button"><img src="ICONS/ICONS%20USADOS-01.svg" alt="" /> Salvar imagem no celular</button><a class="modal-action blue" href="index.html" id="access-site"><img src="ICONS/ICONS%20USADOS-03.svg" alt="" /> Acessar o site</a><button class="modal-action outline" id="copy-ballot-link" type="button">Copiar link da colinha</button><button class="edit-ballot" id="edit-ballot" type="button">Voltar e editar os números</button><p class="modal-feedback" id="modal-feedback" aria-live="polite"></p></div></div></dialog>
+</body>
+</html>
