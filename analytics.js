@@ -41,10 +41,54 @@
       .slice(0, 100);
   }
 
+  var PRIVATE_ENDPOINT = '/analytics-api/collect.php';
+  var PRIVATE_PARAM_KEYS = {
+    partner: true,
+    item_id: true,
+    ballot_type: true,
+    file_name: true,
+    content_type: true,
+    video_id: true,
+    video_type: true,
+    network: true
+  };
+
+  function sendPrivate(name, params) {
+    var safeParams = { page_path: window.location.pathname };
+    Object.keys(params || {}).forEach(function (key) {
+      if (PRIVATE_PARAM_KEYS[key] && params[key] !== undefined && params[key] !== null) {
+        safeParams[key] = clean(params[key]);
+      }
+    });
+
+    var body = JSON.stringify({
+      event: name,
+      params: safeParams,
+      timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ''
+    });
+
+    if (navigator.sendBeacon) {
+      var accepted = navigator.sendBeacon(
+        PRIVATE_ENDPOINT,
+        new Blob([body], { type: 'application/json' })
+      );
+      if (accepted) return;
+    }
+
+    fetch(PRIVATE_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: body,
+      credentials: 'omit',
+      keepalive: true
+    }).catch(function () {});
+  }
+
   function track(name, params) {
     window.gtag('event', name, Object.assign({
       page_path: window.location.pathname
     }, params || {}));
+    sendPrivate(name, params);
   }
 
   window.trackCampaignEvent = track;
@@ -191,6 +235,19 @@
   }
 
   function init() {
+    var countVisit = true;
+    try {
+      if (window.sessionStorage.getItem('luciano_site_visit')) {
+        countVisit = false;
+      } else {
+        window.sessionStorage.setItem('luciano_site_visit', '1');
+      }
+    } catch (error) {}
+
+    if (countVisit) {
+      sendPrivate('site_visit');
+    }
+    sendPrivate('page_view');
     Array.prototype.forEach.call(document.querySelectorAll('video'), monitorVideo);
 
     if (/\/informativos-online\//i.test(window.location.pathname)) {
