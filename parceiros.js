@@ -77,8 +77,8 @@ function slugify(value) {
 }
 
 function partnerUrl(partner) {
-  if (partner.slug === 'leo-vieira-filho') {
-    return 'https://lucianovieira4545.com.br/PARCEIROS/leo-vieira-filho.html';
+  if (partner.slug !== 'anderson-moraes') {
+    return `https://lucianovieira4545.com.br/PARCEIROS/${partner.slug}.html`;
   }
   return `https://lucianovieira4545.com.br/parceiros.html#colinha-${partner.slug}`;
 }
